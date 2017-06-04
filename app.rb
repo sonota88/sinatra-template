@@ -1,5 +1,5 @@
 require "sinatra"
-require "sinatra/contrib"
+require "sinatra/reloader"
 
 require "./lib/erb_context"
 
