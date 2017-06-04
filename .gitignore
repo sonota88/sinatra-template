@@ -1,3 +1,5 @@
 *~
 .bundle/
 vendor/
+public/js_ext/
+public/css_ext/
