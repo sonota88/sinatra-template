@@ -1,3 +1,5 @@
 #!/bin/bash
 
-bundle exec ruby app.rb
+PORT=$1
+
+bundle exec ruby app.rb -p $PORT
