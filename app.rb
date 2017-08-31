@@ -6,6 +6,8 @@ require "json"
 
 require "./lib/erb_context"
 
+# set :bind, '0.0.0.0'
+
 def _render name, context
   template_path = File.join("views", name + ".html")
   ErbContext.render File.read(template_path), context
