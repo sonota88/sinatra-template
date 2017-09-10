@@ -39,6 +39,10 @@ def _api(params)
 end
 
 get "/" do
+  redirect to("/my_app/")
+end
+
+get "/my_app/" do
   _render "index", {}
 end
 
