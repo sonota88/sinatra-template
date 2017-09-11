@@ -11,6 +11,7 @@ const __g = {
     $.post(path, _data, (data)=>{
       if(data.errors.length > 0){
         fnNg(data.errors);
+        return;
       }
       fnOk(data.result);
     });
