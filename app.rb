@@ -2,12 +2,25 @@ require "sinatra"
 require "sinatra/reloader"
 set :method_override, true
 
+require "pp"
 require "json"
 
 require "./lib/erb_context"
 
 # set :bind, '0.0.0.0'
 # set :port, 4567
+
+def puts_e(*args)
+  args.each{|arg| $stderr.puts arg }
+end
+
+def p_e(*args)
+  args.each{|arg| $stderr.puts arg.inspect }
+end
+
+def pp_e(*args)
+  args.each{|arg| $stderr.puts arg.pretty_inspect }
+end
 
 def _render name, context
   template_path = File.join("views", name + ".html")
