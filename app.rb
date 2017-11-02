@@ -23,8 +23,10 @@ def pp_e(*args)
 end
 
 def _render name, context
-  template_path = File.join("views", name + ".html")
-  ErbContext.render File.read(template_path), context
+  body = File.read(File.join("views", name + ".html"))
+  header = File.read("views/_header.html")
+  footer = File.read("views/_footer.html")
+  ErbContext.render header + body + footer, context
 end
 
 def _api(params)
