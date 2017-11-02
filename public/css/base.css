@@ -19,3 +19,8 @@ th, td {
 th {
   background: #f4f4f4;
 }
+
+hr {
+  border: solid #ddd;
+  border-width: 0.1rem 0 0 0;
+}
