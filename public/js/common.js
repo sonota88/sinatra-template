@@ -15,5 +15,15 @@ const __g = {
       }
       fnOk(data.result);
     });
+  },
+
+  guard: ()=>{
+    $("#guard_layer").show();
+  },
+
+  unguard: ()=>{
+    setTimeout(()=>{
+      $("#guard_layer").fadeOut(100);
+    }, 100);
   }
 };
