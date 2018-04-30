@@ -17,6 +17,35 @@ const __g = {
     });
   },
 
+  api_v2: (method, path, data, fnOk, fnNg)=>{
+    const req = new Request(path);
+
+    const fd = new FormData();
+    fd.append("_method", method.toUpperCase());
+    fd.append("_params", JSON.stringify(data));
+
+    fetch(req, {
+      method: 'POST',
+      body: fd,
+      credentials: 'include', // cookie をリクエストに含める
+    }).then((res)=>{
+      if (res.ok) {
+        puts("res.ok == true", res);
+      } else {
+        puts("res.ok != true", res);
+      }
+      return res.json();
+    }).then((resData)=>{
+      if (resData.errors.length > 0) {
+        fnNg(resData.errors);
+        return;
+      }
+      fnOk(resData.result);
+    }).catch((err)=>{
+      puts(err);
+    });
+  },
+
   guard: ()=>{
     $("#guard_layer").show();
   },
