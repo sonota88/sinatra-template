@@ -1,5 +1,5 @@
 *~
 .bundle/
 vendor/
-public/js_ext/
-public/css_ext/
+app/public/js_ext/
+app/public/css_ext/
