@@ -8,7 +8,7 @@ eval "$(rbenv init -)"
 # export PATH="${HOME}/.anyenv/bin:${PATH}"
 # eval "$(anyenv init -)"
 
-BUNDLE_GEMFILE="./Gemfile"
+BUNDLE_GEMFILE="../Gemfile"
 
 bundle exec ruby app.rb -p $PORT
 
