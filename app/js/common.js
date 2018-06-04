@@ -1,8 +1,10 @@
-function puts(... args){
+import $ from 'jquery';
+
+export function puts(... args){
   console.log.apply(console, args);
 }
 
-const __g = {
+export const __g = {
   api: function(method, path, data, fnOk, fnNg){
     var _data = {
       _method: method.toUpperCase()
