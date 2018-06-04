@@ -1,12 +1,21 @@
 #!/bin/bash
 
+echo_rbenv_root(){
+  if   [ -d "${HOME}/.rbenv" ]; then
+    echo "${HOME}/.rbenv"
+  elif [ -d "${HOME}/.anyenv/envs/rbenv" ]; then
+    echo "${HOME}/.anyenv/envs/rbenv"
+  else
+    echo "RBENV_ROOT not found" >&2
+    exit 1
+  fi
+}
+
 PORT=$1
 
-export PATH="${HOME}/.rbenv/bin:${PATH}"
+export RBENV_ROOT="$(echo_rbenv_root)"
+export PATH="${RBENV_ROOT}/bin:${PATH}"
 eval "$(rbenv init -)"
-
-# export PATH="${HOME}/.anyenv/bin:${PATH}"
-# eval "$(anyenv init -)"
 
 BUNDLE_GEMFILE="../Gemfile"
 
