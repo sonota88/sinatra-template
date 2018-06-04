@@ -7,3 +7,5 @@ app/public/css_ext/
 /tmp/
 *.log
 z_*
+
+node_modules/
