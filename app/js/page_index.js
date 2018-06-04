@@ -1,3 +1,6 @@
+import $ from 'jquery';
+import { __g, puts } from './common';
+
 class View {
   static render(state){
     return TreeBuilder.build(h =>
