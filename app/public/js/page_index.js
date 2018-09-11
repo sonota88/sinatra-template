@@ -6,7 +6,8 @@ let __p = {
       puts(result);
     }, (errors)=>{
       __g.unguard();
-      puts(errors);
+      __g.printApiErrors(errors);
+      alert("Check console.");
     });
   }
 };

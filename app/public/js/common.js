@@ -54,5 +54,13 @@ const __g = {
     setTimeout(()=>{
       $("#guard_layer").fadeOut(100);
     }, 100);
+  },
+
+  printApiErrors(es){
+    es.forEach((e, i)=>{
+      puts(`-------- error ${i} --------`);
+      puts(e.trace.split("\n").reverse().join("\n"));
+      puts(e.msg);
+    });
   }
 };
