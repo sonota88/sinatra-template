@@ -58,7 +58,7 @@ get "/" do
 end
 
 get "/my_app/" do
-  _render "index", {}
+  _render "index", { x: 123 }
 end
 
 get "/api/sample" do
