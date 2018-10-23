@@ -33,6 +33,8 @@ $PROFILE =
 # end
 # set :server_settings, server_settings
 
+$use_webpack = true
+
 
 def puts_e(*args)
   args.each{|arg| $stderr.puts arg }
@@ -68,6 +70,8 @@ def _render(name, context)
   else
     load_template(name)
   end
+
+  context[:__use_webpack] = $use_webpack
 
   erb = $TEMPLATE_CACHE[name]
   erb.result ErbContext.hash_to_binding(context)
