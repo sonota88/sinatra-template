@@ -6,7 +6,7 @@ module.exports = {
     // "common": "./js/common.js"
   },
   output: {
-    path: __dirname + "/public/js",
+    path: __dirname + "/public/js/webpack",
     filename: "[name].js"
   }
 };
