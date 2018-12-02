@@ -12,6 +12,18 @@ require "./lib/erb_context"
 # set :bind, '0.0.0.0'
 # set :port, 4567
 
+$PROFILE =
+  if settings.production?
+    :prod
+  elsif settings.development?
+    :devel
+  elsif settings.test?
+    :test
+  else
+    raise "something wrong"
+  end
+
+
 def puts_e(*args)
   args.each{|arg| $stderr.puts arg }
 end
@@ -63,6 +75,7 @@ get "/my_app/" do
   puts_e "development? (#{ settings.development? })"
   puts_e "production? (#{ settings.production? })"
   puts_e "test? (#{ settings.test? })"
+  puts_e "$PROFILE (#{ $PROFILE })"
 
   _render "index", { x: 123 }
 end
