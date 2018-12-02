@@ -36,11 +36,31 @@ def pp_e(*args)
   args.each{|arg| $stderr.puts arg.pretty_inspect }
 end
 
-def _render(name, context)
+$TEMPLATE_CACHE = {}
+
+def load_template(name)
+  puts_e "load_template (#{name})"
+
   body = File.read(File.join("views", name + ".html"))
   header = File.read("views/_header.html")
   footer = File.read("views/_footer.html")
-  ErbContext.render header + body + footer, context
+
+  $TEMPLATE_CACHE[name] = ERB.new(header + body + footer)
+end
+
+def _render(name, context)
+  if $PROFILE == :prod
+    if $TEMPLATE_CACHE.has_key?(name)
+      ;
+    else
+      load_template(name)
+    end
+  else
+    load_template(name)
+  end
+
+  erb = $TEMPLATE_CACHE[name]
+  erb.result ErbContext.hash_to_binding(context)
 end
 
 def _api(params)
