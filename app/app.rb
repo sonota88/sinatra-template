@@ -58,6 +58,10 @@ get "/" do
 end
 
 get "/my_app/" do
+  puts_e "development? (#{ settings.development? })"
+  puts_e "production? (#{ settings.production? })"
+  puts_e "test? (#{ settings.test? })"
+
   _render "index", { x: 123 }
 end
 

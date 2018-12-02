@@ -20,6 +20,3 @@ eval "$(rbenv init -)"
 BUNDLE_GEMFILE="../Gemfile"
 
 bundle exec ruby app.rb -p $PORT
-
-# for production
-# bundle exec ruby app.rb -p $PORT -e production
