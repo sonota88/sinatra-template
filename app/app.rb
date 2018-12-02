@@ -36,7 +36,7 @@ def pp_e(*args)
   args.each{|arg| $stderr.puts arg.pretty_inspect }
 end
 
-def _render name, context
+def _render(name, context)
   body = File.read(File.join("views", name + ".html"))
   header = File.read("views/_header.html")
   footer = File.read("views/_footer.html")

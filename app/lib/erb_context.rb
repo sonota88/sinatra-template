@@ -1,9 +1,9 @@
 class ErbContext
-  def initialize params
+  def initialize(params)
     @params = params
   end
 
-  def method_missing name, *args
+  def method_missing(name, *args)
     if @params.has_key? name
       @params[name]
     else
@@ -15,11 +15,11 @@ class ErbContext
     binding
   end
 
-  def self.hash_to_binding params
+  def self.hash_to_binding(params)
     ErbContext.new(params).get_binding
   end
 
-  def self.render template, params
+  def self.render(template, params)
     erb = ERB.new(template)
     erb.result ErbContext.hash_to_binding(params)
   end
