@@ -1,5 +1,7 @@
 require "sinatra"
-require "sinatra/reloader"
+if settings.development?
+  require "sinatra/reloader"
+end
 set :method_override, true
 
 require "pp"
