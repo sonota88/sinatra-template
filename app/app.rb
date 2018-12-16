@@ -26,6 +26,12 @@ $PROFILE =
 #   set :bind, '0.0.0.0'
 # end
 
+# server_settings = {}
+# if $PROFILE == :devel
+#   server_settings[:DoNotReverseLookup] = true
+# end
+# set :server_settings, server_settings
+
 
 def puts_e(*args)
   args.each{|arg| $stderr.puts arg }
