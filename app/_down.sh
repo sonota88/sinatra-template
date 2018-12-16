@@ -2,4 +2,4 @@
 
 PORT=$1
 
-# TODO
+curl http://localhost:${PORT}/shutdown

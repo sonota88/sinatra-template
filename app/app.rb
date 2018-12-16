@@ -109,6 +109,22 @@ get "/my_app/" do
   _render "index", { x: 123 }
 end
 
+# ruby - Sinatra - terminate server from request - Stack Overflow
+# https://stackoverflow.com/questions/19523889/sinatra-terminate-server-from-request
+get "/shutdown" do
+  if $PROFILE == :devel
+    self_pid = Process.pid
+    puts_e "shutdown ... (#{self_pid})"
+    Thread.new do
+      sleep 1
+      Process.kill(:KILL, self_pid)
+    end
+    halt "bye\n"
+  else
+    "invalid operation"
+  end
+end
+
 get "/api/sample" do
   content_type :json
   JSON.generate(
