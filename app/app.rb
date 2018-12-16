@@ -9,9 +9,6 @@ require "json"
 
 require "./lib/erb_context"
 
-# set :bind, '0.0.0.0'
-# set :port, 4567
-
 $PROFILE =
   if settings.production?
     :prod
@@ -22,6 +19,12 @@ $PROFILE =
   else
     raise "something wrong"
   end
+
+# set :port, 4567
+
+# if $PROFILE == :devel
+#   set :bind, '0.0.0.0'
+# end
 
 
 def puts_e(*args)
