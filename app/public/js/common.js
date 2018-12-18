@@ -56,7 +56,7 @@ const __g = {
     }, 100);
   },
 
-  printApiErrors(es){
+  printApiErrors: (es)=>{
     es.forEach((e, i)=>{
       puts(`-------- error ${i} --------`);
       puts(e.trace.split("\n").reverse().join("\n"));
