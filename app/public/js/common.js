@@ -62,5 +62,12 @@ const __g = {
       puts(e.trace.split("\n").reverse().join("\n"));
       puts(e.msg);
     });
+  },
+
+  ready: (page)=>{
+    window.__p = page;
+    document.addEventListener("DOMContentLoaded", ()=>{
+      page.init();
+    });
   }
 };
