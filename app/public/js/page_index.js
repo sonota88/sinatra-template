@@ -1,4 +1,4 @@
-let __p = {
+class Page {
   init(){
     puts("init");
     __g.api_v2("get", "/api/sample", { a: 123 }, (result)=>{
@@ -10,6 +10,6 @@ let __p = {
       alert("Check console.");
     });
   }
-};
+}
 
-$(__p.init);
+__g.ready(new Page());
