@@ -15,6 +15,10 @@ class Page {
     this.state = {};
   }
 
+  getTitle(){
+    return "sinatra-skelton";
+  }
+
   init(){
     puts("init");
     __g.api_v2("get", "/api/sample", { a: 123 }, (result)=>{

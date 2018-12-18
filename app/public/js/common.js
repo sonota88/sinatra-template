@@ -68,6 +68,7 @@ const __g = {
     window.__p = page;
     document.addEventListener("DOMContentLoaded", ()=>{
       page.init();
+      document.title = page.getTitle() + " | {app_name}";
     });
   }
 };
