@@ -127,13 +127,11 @@ get "/shutdown" do
 end
 
 get "/api/sample" do
-  content_type :json
-  JSON.generate(
+  _api(params) do |_params|
+    puts_e "-->> GET /api/sample"
     {
-      :errors => [],
-      :result => {
-        :aa => 321
-      }
+      :aa => 321,
+      :_params => _params
     }
-  )
+  end
 end
