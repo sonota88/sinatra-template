@@ -4,7 +4,12 @@ class TreeBuilder {
 
     for(let k in attrs){
       const v = attrs[k];
-      el.setAttribute(k, v);
+      if (/^on(click)$/.test(k)) {
+        const eventName = k.substring(2);
+        el.addEventListener(eventName, v, false);
+      } else {
+        el.setAttribute(k, v);
+      }
     }
 
     children.forEach((child)=>{
