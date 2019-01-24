@@ -21,7 +21,7 @@ class Page {
 
   init(){
     puts("init");
-    __g.api_v2("get", "/api/sample", { a: 123 }, (result)=>{
+    __g.api_v2("get", "/api/sample", { a: 123, b: { c: 456 } }, (result)=>{
       __g.unguard();
       puts(result);
       Object.assign(this.state, result);

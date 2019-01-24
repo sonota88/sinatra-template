@@ -124,6 +124,31 @@ def _api(params)
   })
 end
 
+def _api_v2(params)
+  result = {}
+  context = {
+    :errors => []
+  }
+
+  begin
+    api_params = Myhash.to_sym_key( JSON.parse(params[:_params]) )
+    pp_e api_params if $PROFILE == :devel
+    result = yield(api_params, context)
+  rescue => e
+    $stderr.puts e.class, e.message, e.backtrace
+    context[:errors] << {
+      :msg => "#{e.class}: #{e.message}",
+      :trace => e.backtrace.join("\n")
+    }
+  end
+
+  content_type :json
+  JSON.generate({
+    "errors" => context[:errors],
+    "result" => result
+  })
+end
+
 get "/" do
   redirect to("/my_app/")
 end
@@ -154,7 +179,7 @@ get "/shutdown" do
 end
 
 get "/api/sample" do
-  _api(params) do |_params|
+  _api_v2(params) do |_params|
     puts_e "-->> GET /api/sample"
     {
       :aa => 321,
