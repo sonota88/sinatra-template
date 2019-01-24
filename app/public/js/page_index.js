@@ -5,6 +5,11 @@ class View {
       , h("button", {}, "OK")
       , h("input", { type: "checkbox" })
       , h("a", { href: "#" }, "link " + state.val)
+      , h("button", {
+            onclick: ()=>{ __p.onclick_reloadLibs(); }
+          }
+        , "reload libs"
+        )
       )
     );
   }
@@ -17,6 +22,16 @@ class Page {
 
   getTitle(){
     return "sinatra-skelton";
+  }
+
+  onclick_reloadLibs(){
+    __g.api_v2("get", "/api/reload_libs", {}, (result)=>{
+      __g.unguard();
+    }, (errors)=>{
+      __g.unguard();
+      __g.printApiErrors(errors);
+      alert("Check console.");
+    });
   }
 
   init(){

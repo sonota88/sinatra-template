@@ -187,3 +187,15 @@ get "/api/sample" do
     }
   end
 end
+
+get "/api/reload_libs" do
+  _api_v2(params) do |_params|
+    puts_e "-->> GET /api/reload_libs"
+
+    return {} if $PROFILE == :prod
+
+    load "./lib/erb_context.rb"
+
+    {}
+  end
+end
