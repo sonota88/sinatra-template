@@ -72,6 +72,33 @@ def _render(name, context)
   erb.result ErbContext.hash_to_binding(context)
 end
 
+class Myhash
+  def self.to_sym_key(hash)
+    new_hash = {}
+
+    hash.each do |k, v|
+      _v =
+        if v.is_a? Hash
+          to_sym_key(v)
+        else
+          v
+        end
+
+      _k =
+        if k.is_a? String
+          k.to_sym
+        else
+          k
+        end
+
+      new_hash[_k] = _v
+    end
+
+    new_hash
+  end
+end
+
+
 def _api(params)
   result = {}
   context = {
