@@ -80,6 +80,7 @@ def _api(params)
 
   begin
     api_params = JSON.parse(params[:_params])
+    pp_e api_params if $PROFILE == :devel
     result = yield(api_params, context)
   rescue => e
     $stderr.puts e.class, e.message, e.backtrace
