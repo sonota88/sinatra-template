@@ -25,6 +25,17 @@ hr {
   border-width: 0.1rem 0 0 0;
 }
 
+a {
+  text-decoration: none;
+  color: #06a;
+}
+a:visited {
+  color: #268;
+}
+a:hover {
+  color: #c00;
+}
+
 button {
   margin: 0.3rem;
 }
