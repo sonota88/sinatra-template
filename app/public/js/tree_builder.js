@@ -7,6 +7,11 @@ class TreeBuilder {
       if (/^on(click)$/.test(k)) {
         const eventName = k.substring(2);
         el.addEventListener(eventName, v, false);
+      } else if (k === "style") {
+        for (let sk in v) {
+          const sv = v[sk];
+          el.style[sk] = sv;
+        }
       } else {
         el.setAttribute(k, v);
       }
