@@ -7,7 +7,7 @@ class TreeBuilder {
     const el = document.createElement(tag);
     const append = TreeBuilder._appendChild;
 
-    for(let k in attrs){
+    for (let k in attrs) {
       const v = attrs[k];
       if (/^on(click)$/.test(k)) {
         const eventName = k.substring(2);
@@ -26,10 +26,8 @@ class TreeBuilder {
       if (["string", "number", "boolean"].includes(typeof child)) {
         append(el, document.createTextNode(child));
       } else if (Array.isArray(child)) {
-        child.forEach(_child =>{
-          append(el, _child);
-        });
-      }else{
+        child.forEach(_child => append(el, _child));
+      } else {
         append(el, child);
       }
     });
