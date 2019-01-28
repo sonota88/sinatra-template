@@ -18,7 +18,7 @@ class TreeBuilder {
     }
 
     children.forEach((child)=>{
-      if (["string", "number"].includes(typeof child)) {
+      if (["string", "number", "boolean"].includes(typeof child)) {
         el.appendChild(document.createTextNode(child));
       }else{
         el.appendChild(child);
