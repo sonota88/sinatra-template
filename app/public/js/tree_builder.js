@@ -1,6 +1,11 @@
 class TreeBuilder {
+  static _appendChild(parent, child){
+    parent.appendChild(child);
+  }
+
   static _build(tag, attrs, ...children){
     const el = document.createElement(tag);
+    const append = TreeBuilder._appendChild;
 
     for(let k in attrs){
       const v = attrs[k];
@@ -19,9 +24,9 @@ class TreeBuilder {
 
     children.forEach((child)=>{
       if (["string", "number", "boolean"].includes(typeof child)) {
-        el.appendChild(document.createTextNode(child));
+        append(el, document.createTextNode(child));
       }else{
-        el.appendChild(child);
+        append(el, child);
       }
     });
 
