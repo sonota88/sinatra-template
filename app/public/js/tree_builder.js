@@ -25,6 +25,10 @@ class TreeBuilder {
     children.forEach((child)=>{
       if (["string", "number", "boolean"].includes(typeof child)) {
         append(el, document.createTextNode(child));
+      } else if (Array.isArray(child)) {
+        child.forEach(_child =>{
+          append(el, _child);
+        });
       }else{
         append(el, child);
       }
