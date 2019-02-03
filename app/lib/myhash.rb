@@ -50,4 +50,41 @@ class Myhash
       .to_plain
   end
 
+  # to snake case
+  def self._to_snake(arg)
+    is_sym = arg.is_a?(Symbol)
+
+    s = is_sym ? arg.to_s : arg
+
+    new_s = s.chars
+      .map do |c|
+        if /^[A-Z]$/ =~ c
+          "_" + c.downcase
+        else
+          c
+        end
+      end
+      .join("")
+
+    is_sym ? new_s.to_sym : new_s
+  end
+
+  def to_snake
+    new_h = {}
+    @h.each{|k, v|
+      new_k = Myhash._to_snake(k.to_s)
+
+      new_v =
+        if v.is_a? Hash
+          Myhash.new(v).to_snake
+        else
+          v
+        end
+
+      new_h[new_k] = new_v
+    }
+
+    Myhash.new(new_h)
+  end
+
 end
