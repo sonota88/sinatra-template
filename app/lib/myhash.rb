@@ -26,7 +26,7 @@ class Myhash
     @h.each do |k, v|
       new_v =
         if v.is_a? Hash
-          to_sym_key(v)
+          Myhash.to_sym_key(v)
         else
           v
         end
@@ -72,7 +72,7 @@ class Myhash
   def to_snake
     new_h = {}
     @h.each{|k, v|
-      new_k = Myhash._to_snake(k.to_s)
+      new_k = Myhash._to_snake(k)
 
       new_v =
         if v.is_a? Hash
@@ -107,7 +107,7 @@ class Myhash
   def to_lcc
     new_h = {}
     @h.each{|k, v|
-      new_k = Myhash._to_lcc(k.to_s)
+      new_k = Myhash._to_lcc(k)
 
       new_v =
         if v.is_a? Hash
