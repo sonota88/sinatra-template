@@ -122,4 +122,17 @@ class Myhash
     Myhash.new(new_h)
   end
 
+  def method_missing(name)
+    unless @h.key? name.to_sym
+      raise "key not found (#{name}) (#{ @h.inspect })"
+    end
+    val = @h[name.to_sym]
+
+    if val.is_a? Hash
+      Myhash.new(val)
+    else
+      val
+    end
+  end
+
 end
