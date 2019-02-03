@@ -106,7 +106,10 @@ def _api_v2(params)
   }
 
   begin
-    api_params = Myhash.to_sym_key( JSON.parse(params[:_params]) )
+    api_params = Myhash.new( JSON.parse(params[:_params]) )
+                 .to_sym_key
+                 .to_snake
+                 .to_plain
     pp_e api_params if $PROFILE == :devel
     result = yield(api_params, context)
   rescue => e
