@@ -8,13 +8,13 @@ class Myhash
     new_h = {}
 
     @h.each{|k, v|
-      v2 =
+      new_v =
         if v.is_a? Myhash
           v.to_plain
         else
           v
         end
-      new_h[k] = v2
+      new_h[k] = new_v
     }
 
     new_h
@@ -24,21 +24,21 @@ class Myhash
     new_h = {}
 
     @h.each do |k, v|
-      _v =
+      new_v =
         if v.is_a? Hash
           to_sym_key(v)
         else
           v
         end
 
-      _k =
+      new_k =
         if k.is_a? String
           k.to_sym
         else
           k
         end
 
-      new_h[_k] = _v
+      new_h[new_k] = new_v
     end
 
     Myhash.new(new_h)
