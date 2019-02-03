@@ -87,4 +87,39 @@ class Myhash
     Myhash.new(new_h)
   end
 
+  # to lower camel case
+  def self._to_lcc(arg)
+    is_sym = arg.is_a?(Symbol)
+
+    s = is_sym ? arg.to_s : arg
+
+    words = s.split("_")
+
+    new_s =
+      words[0] +
+      words[1..-1]
+        .map{|word| word.capitalize }
+        .join("")
+
+    is_sym ? new_s.to_sym : new_s
+  end
+
+  def to_lcc
+    new_h = {}
+    @h.each{|k, v|
+      new_k = Myhash._to_lcc(k.to_s)
+
+      new_v =
+        if v.is_a? Hash
+          Myhash.new(v).to_lcc
+        else
+          v
+        end
+
+      new_h[new_k] = new_v
+    }
+
+    Myhash.new(new_h)
+  end
+
 end
