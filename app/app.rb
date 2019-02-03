@@ -120,10 +120,14 @@ def _api_v2(params)
     }
   end
 
+  result_lcc = Myhash.new(result)
+               .to_lcc
+               .to_plain
+
   content_type :json
   JSON.generate({
     "errors" => context[:errors],
-    "result" => result
+    "result" => result_lcc
   })
 end
 
@@ -161,6 +165,9 @@ get "/api/sample" do
     puts_e "-->> GET /api/sample"
     {
       :aa => 321,
+      :aa_bb => {
+        :cc_dd => 456
+      },
       :_params => _params
     }
   end
