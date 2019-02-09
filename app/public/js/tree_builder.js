@@ -1,11 +1,24 @@
 class TreeBuilder {
   static _appendChild(parent, child){
-    parent.appendChild(child);
+    if (child == null) {
+      return;
+    }
+
+    const append = this._appendChild.bind(this);
+
+    if (["string", "number", "boolean"].includes(typeof child)) {
+      parent.appendChild(document.createTextNode(child));
+    } else if (Array.isArray(child)) {
+      child.forEach(_child => append(parent, _child));
+    } else if (child.constructor.name === "NodeList") {
+      Array.from(child).forEach(_child => append(parent, _child));
+    } else {
+      parent.appendChild(child);
+    }
   }
 
   static _build(tag, attrs, ...children){
     const el = document.createElement(tag);
-    const append = TreeBuilder._appendChild;
 
     for (let k in attrs) {
       const v = attrs[k];
@@ -22,29 +35,17 @@ class TreeBuilder {
       }
     }
 
-    if (children == null) {
-      return el;
-    }
-
-    children
-      .filter(child => child != null)
-      .forEach((child)=>{
-        if (["string", "number", "boolean"].includes(typeof child)) {
-          append(el, document.createTextNode(child));
-        } else if (Array.isArray(child)) {
-          child.forEach(_child => append(el, _child));
-        } else if (child.constructor.name === "NodeList") {
-          Array.from(child).forEach(_child => append(el, _child));
-        } else {
-          append(el, child);
-        }
+    if (children != null) {
+      children.forEach(child => {
+        this._appendChild(el, child);
       });
+    }
 
     return el;
   }
 
   static build(fn){
-    return fn(TreeBuilder._build);
+    return fn(TreeBuilder._build.bind(TreeBuilder));
   }
 
   /**
