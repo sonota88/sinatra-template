@@ -27,18 +27,18 @@ class TreeBuilder {
     }
 
     children
-    .filter(child => child != null)
-    .forEach((child)=>{
-      if (["string", "number", "boolean"].includes(typeof child)) {
-        append(el, document.createTextNode(child));
-      } else if (Array.isArray(child)) {
-        child.forEach(_child => append(el, _child));
-      } else if (child.constructor.name === "NodeList") {
-        Array.from(child).forEach(_child => append(el, _child));
-      } else {
-        append(el, child);
-      }
-    });
+      .filter(child => child != null)
+      .forEach((child)=>{
+        if (["string", "number", "boolean"].includes(typeof child)) {
+          append(el, document.createTextNode(child));
+        } else if (Array.isArray(child)) {
+          child.forEach(_child => append(el, _child));
+        } else if (child.constructor.name === "NodeList") {
+          Array.from(child).forEach(_child => append(el, _child));
+        } else {
+          append(el, child);
+        }
+      });
 
     return el;
   }
