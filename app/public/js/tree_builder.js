@@ -22,7 +22,13 @@ class TreeBuilder {
       }
     }
 
-    children.forEach((child)=>{
+    if (children == null) {
+      return el;
+    }
+
+    children
+    .filter(child => child != null)
+    .forEach((child)=>{
       if (["string", "number", "boolean"].includes(typeof child)) {
         append(el, document.createTextNode(child));
       } else if (Array.isArray(child)) {
