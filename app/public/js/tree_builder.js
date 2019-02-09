@@ -27,6 +27,8 @@ class TreeBuilder {
         append(el, document.createTextNode(child));
       } else if (Array.isArray(child)) {
         child.forEach(_child => append(el, _child));
+      } else if (child.constructor.name === "NodeList") {
+        Array.from(child).forEach(_child => append(el, _child));
       } else {
         append(el, child);
       }
@@ -37,5 +39,14 @@ class TreeBuilder {
 
   static build(fn){
     return fn(TreeBuilder._build);
+  }
+
+  /**
+   * @return NodeList
+   */
+  static buildRawHtml(html){
+    const el = document.createElement("div");
+    el.innerHTML = html;
+    return el.childNodes;
   }
 }
