@@ -10,6 +10,7 @@ class View {
           }
         , "reload libs"
         )
+      , TreeBuilder.buildRawHtml('aa <em>em</em> bb <span onclick="alert(123)">click</span>')
       )
     );
   }
