@@ -22,7 +22,7 @@ class TreeBuilder {
 
     for (let k in attrs) {
       const v = attrs[k];
-      if (/^on(click|change)$/.test(k)) {
+      if (/^on(click|change|keydown)$/.test(k)) {
         const eventName = k.substring(2);
         el.addEventListener(eventName, v, false);
       } else if (k === "style") {
