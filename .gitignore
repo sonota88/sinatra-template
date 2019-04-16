@@ -5,3 +5,4 @@ app/public/js_ext/
 app/public/css_ext/
 
 /tmp/
+*.log
