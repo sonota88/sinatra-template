@@ -1,28 +1,7 @@
-require "logger"
-
-class StderrLogger < ::Logger
-  def write(msg)
-    self << msg
-  end
-
-  def puts(*args)
-    args.each do |arg|
-      self << arg
-      self << "\n"
-    end
-  end
-end
-
 require "sinatra"
 
 if settings.development?
   require "sinatra/reloader"
-end
-if settings.production?
-  $stderr = StderrLogger.new(
-    File.join(__dir__, "stderr.log"),
-    5, 1 * 1024 * 1024
-  )
 end
 
 set :method_override, true
