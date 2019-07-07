@@ -19,4 +19,4 @@ eval "$(rbenv init -)"
 
 BUNDLE_GEMFILE="../Gemfile"
 
-bundle exec ruby app.rb -p $PORT
+bundle exec rackup -p $PORT
