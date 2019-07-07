@@ -1,8 +1,8 @@
+# coding: utf-8
 require "sinatra"
 
-if settings.development?
-  require "sinatra/reloader"
-end
+# デフォルトでは development でだけ有効になる
+require "sinatra/reloader"
 
 set :method_override, true
 
