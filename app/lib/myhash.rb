@@ -104,6 +104,18 @@ class Myhash
     is_sym ? new_s.to_sym : new_s
   end
 
+  def self._to_lcc_array(xs)
+    xs.map{|x|
+      if x.is_a? Hash
+        Myhash.new(x).to_lcc
+      elsif x.is_a? Array
+        Myhash._to_lcc_array(x)
+      else
+        x
+      end
+    }
+  end
+
   def to_lcc
     new_h = {}
     @h.each{|k, v|
@@ -112,6 +124,8 @@ class Myhash
       new_v =
         if v.is_a? Hash
           Myhash.new(v).to_lcc
+        elsif v.is_a? Array
+          Myhash._to_lcc_array(v)
         else
           v
         end
