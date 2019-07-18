@@ -4,6 +4,18 @@ class Myhash
     @h = hash
   end
 
+  def self._to_plain_array(xs)
+    xs.map{|x|
+      if x.is_a? Myhash
+        x.to_plain
+      elsif x.is_a? Array
+        Myhash._to_plain_array(x)
+      else
+        x
+      end
+    }
+  end
+
   def to_plain
     new_h = {}
 
@@ -11,6 +23,8 @@ class Myhash
       new_v =
         if v.is_a? Myhash
           v.to_plain
+        elsif v.is_a? Array
+          Myhash._to_plain_array(v)
         else
           v
         end
