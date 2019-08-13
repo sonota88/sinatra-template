@@ -56,7 +56,7 @@ class Page {
   render(){
     $("#tree_builder_container")
       .empty()
-      .append(View.render({ val: 234 }));
+      .append(View.render(this.state));
   }
 }
 
