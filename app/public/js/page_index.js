@@ -11,6 +11,18 @@ class View {
         , "reload libs"
         )
       , TreeBuilder.buildRawHtml('aa <em>em</em> bb <span onclick="alert(123)">click</span>')
+
+      , h("hr")
+      , MySelect.render(
+          [
+            { value: "1", label: "option 1" }
+          , { value: "2", label: "option 2" }
+          ]
+        , {
+            selected: state.optionId
+          , onchange: (ev)=>{ __p.onchange_myselect(ev); }
+          }
+        )
       )
     );
   }
@@ -18,7 +30,9 @@ class View {
 
 class Page {
   constructor(){
-    this.state = {};
+    this.state = {
+      optionId: 2
+    };
   }
 
   getTitle(){
@@ -57,6 +71,13 @@ class Page {
     $("#tree_builder_container")
       .empty()
       .append(View.render(this.state));
+  }
+
+  onchange_myselect(ev){
+    const $tgt = $(ev.target);
+    const val = $tgt.find("option:selected").val();
+    this.state.optionId = parseInt(val);
+    puts(this.state);
   }
 }
 
