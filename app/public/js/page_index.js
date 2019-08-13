@@ -10,7 +10,9 @@ class View {
           }
         , "reload libs"
         )
-      , TreeBuilder.buildRawHtml('aa <em>em</em> bb <span onclick="alert(123)">click</span>')
+      , TreeBuilder.buildRawHtml(
+          'aa <em>em</em> bb <span onclick="alert(123)">click</span>'
+        )
 
       , h("hr")
       , MySelect.render(
