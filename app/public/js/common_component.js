@@ -23,6 +23,11 @@ class MySelect {
     const $tgt = $(ev.target);
     return $tgt.find("option:selected").val();
   }
+
+  static getValueAsInt(ev){
+    const val = MySelect.getValue(ev);
+    return parseInt(val, 10);
+  }
 }
 
 class MyCheckboxes {

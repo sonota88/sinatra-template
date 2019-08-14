@@ -93,8 +93,7 @@ class Page {
   }
 
   onchange_myselect(ev){
-    const val = MySelect.getValue(ev);
-    this.state.optionId = parseInt(val);
+    this.state.optionId = MySelect.getValueAsInt(ev);
     puts(this.state);
   }
 
