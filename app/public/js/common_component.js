@@ -77,8 +77,7 @@ class MyRadiobuttons {
     const $tgt = $(ev.target);
     const $cont = $tgt.closest(".myradiobuttons_container");
 
-    return Array.from($cont.find("input:checked"))
-      .map(input => input.value);
+    return $cont.find("input:checked").val();
   }
 
   static getValueAsInt(ev){
