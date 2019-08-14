@@ -1,5 +1,18 @@
 // --------------------------------
 
+class MyOption {
+  static render(item, selectedVal){
+    const attrs = { value: item.value };
+    if (item.value === selectedVal) {
+      attrs.selected = "selected";
+    }
+
+    return TreeBuilder.build(h =>
+      h("option", attrs, item.label)
+    );
+  }
+}
+
 class MySelect {
   static render(items, opts){
     const attrs = {};
@@ -9,13 +22,8 @@ class MySelect {
 
     return TreeBuilder.build(h =>
       h("select", attrs
-      , items.map(item => {
-            const optAttrs = { value: item.value };
-            if (item.value === opts.selected) {
-              optAttrs.selected = "selected";
-            }
-            return h("option", optAttrs, item.label);
-          }
+      , items.map(item =>
+          MyOption.render(item, opts.selected)
         )
       )
     );
