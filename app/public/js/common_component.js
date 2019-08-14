@@ -19,7 +19,7 @@ class MySelect {
     );
   }
 
-  static getValues(ev){
+  static getValue(ev){
     const $tgt = $(ev.target);
     return $tgt.find("option:selected").val();
   }
