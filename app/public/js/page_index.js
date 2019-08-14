@@ -15,6 +15,8 @@ class View {
         )
 
       , h("hr")
+
+      , h("h2", {}, "select + option")
       , MySelect.render(
           [
             { value: 1, label: "option 1" }
@@ -26,7 +28,7 @@ class View {
           }
         )
 
-      , h("hr")
+      , h("h2", {}, "radio")
       , MyRadiobuttons.render(
           "myradiobuttons_sample"
         , [
@@ -41,7 +43,7 @@ class View {
           }
         )
 
-      , h("hr")
+      , h("h2", {}, "checkbox")
       , MyCheckboxes.render(
           "mycheckboxes_sample"
         , [
