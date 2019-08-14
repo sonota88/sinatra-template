@@ -44,17 +44,17 @@ class MySelect {
 
 class MyRadiobutton {
   static render(name, item, selectedVal){
-    const checked = (item.value === selectedVal);
+    const selected = (item.value === selectedVal);
 
     const labelClasses = ["label_hl"];
-    if (checked) { labelClasses.push("label_selected"); }
+    if (selected) { labelClasses.push("label_selected"); }
 
     const attrs = {
       type: "radio",
       name: name,
       value: item.value
     };
-    if (checked) {
+    if (selected) {
       attrs.checked = "checked";
     }
 
@@ -75,7 +75,7 @@ class MyRadiobuttons {
         , onchange: (ev)=>{ opts.onchange(ev); }
         }
       , items.map(item =>
-          MyRadiobutton.render(name, item, opts.checked)
+          MyRadiobutton.render(name, item, opts.selected)
         )
       )
     );
@@ -97,18 +97,18 @@ class MyRadiobuttons {
 // --------------------------------
 
 class MyCheckbox {
-  static render(name, item, checkedVals){
-    const checked = (checkedVals.includes(item.value));
+  static render(name, item, selectedVals){
+    const selected = (selectedVals.includes(item.value));
 
     const labelClasses = ["label_hl"];
-    if (checked) { labelClasses.push("label_selected"); }
+    if (selected) { labelClasses.push("label_selected"); }
 
     const attrs = {
       type: "checkbox",
       name: name,
       value: item.value
     };
-    if (checked) {
+    if (selected) {
       attrs.checked = "checked";
     }
 
@@ -129,7 +129,7 @@ class MyCheckboxes {
         , onchange: (ev)=>{ opts.onchange(ev); }
         }
       , items.map(item =>
-          MyCheckbox.render(name, item, opts.checked)
+          MyCheckbox.render(name, item, opts.selected)
         )
       )
     );

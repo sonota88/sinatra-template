@@ -36,7 +36,7 @@ class View {
           , { value: 2, label: "item 2" }
           ]
         , {
-            checked: state.optionId
+            selected: state.optionId
           , onchange: (ev)=>{
               __p.onchange_myRadiobuttons(ev);
             }
@@ -52,7 +52,7 @@ class View {
           , { value: 3, label: "item 3" }
           ]
         , {
-            checked: state.checkedIds
+            selected: state.checkedIds
           , onchange: (ev)=>{
               __p.onchange_myCheckboxes(ev);
             }
