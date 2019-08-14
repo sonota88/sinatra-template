@@ -42,6 +42,31 @@ class MySelect {
 
 // --------------------------------
 
+class MyRadiobutton {
+  static render(name, item, selectedVal){
+    const checked = (item.value === selectedVal);
+
+    const labelClasses = ["label_hl"];
+    if (checked) { labelClasses.push("label_selected"); }
+
+    const attrs = {
+      type: "radio",
+      name: name,
+      value: item.value
+    };
+    if (checked) {
+      attrs.checked = "checked";
+    }
+
+    return TreeBuilder.build(h =>
+      h("label", { "class": labelClasses.join(" ") }
+      , h("input", attrs)
+      , item.label
+      )
+    );
+  }
+}
+
 class MyRadiobuttons {
   static render(name, items, opts){
     return TreeBuilder.build(h =>
@@ -49,26 +74,9 @@ class MyRadiobuttons {
           "class": "myradiobuttons_container"
         , onchange: (ev)=>{ opts.onchange(ev); }
         }
-      , items.map(item => {
-          const checked = (item.value === opts.checked);
-
-          const labelClasses = ["label_hl"];
-          if (checked) { labelClasses.push("label_selected"); }
-
-          const attrs = {
-            type: "radio",
-            name: name,
-            value: item.value
-          };
-          if (checked) {
-            attrs.checked = "checked";
-          }
-
-          return h("label", { "class": labelClasses.join(" ") }
-          , h("input", attrs)
-          , item.label
-          );
-        })
+      , items.map(item =>
+          MyRadiobutton.render(name, item, opts.checked)
+        )
       )
     );
   }
