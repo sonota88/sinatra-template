@@ -28,7 +28,8 @@ class View {
 
       , h("hr")
       , MyRadiobuttons.render(
-          [
+          "myradiobuttons_sample"
+        , [
             { value: 1, label: "item 1" }
           , { value: 2, label: "item 2" }
           ]

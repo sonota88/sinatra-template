@@ -31,7 +31,7 @@ class MySelect {
 }
 
 class MyRadiobuttons {
-  static render(items, opts){
+  static render(name, items, opts){
     return TreeBuilder.build(h =>
       h("span", {
           "class": "myradiobuttons_container"
@@ -40,7 +40,7 @@ class MyRadiobuttons {
       , items.map(item => {
             const attrs = {
               type: "radio",
-              name: "sample",
+              name: name,
               value: item.value
             };
             if (item.value === opts.checked) {
