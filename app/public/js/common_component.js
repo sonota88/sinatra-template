@@ -15,13 +15,10 @@ class MyOption {
 
 class MySelect {
   static render(items, opts){
-    const attrs = {};
-    if ("onchange" in opts) {
-      attrs.onchange = opts.onchange;
-    }
-
     return TreeBuilder.build(h =>
-      h("select", attrs
+      h("select", {
+          onchange: opts.onchange
+        }
       , items.map(item =>
           MyOption.render(item, opts.selected)
         )
@@ -74,15 +71,11 @@ class MyRadiobutton {
 */
 class MyRadiobuttons {
   static render(name, items, opts){
-    const contAttrs = {
-      "class": "myradiobuttons_container"
-    };
-    if ("onchange" in opts) {
-      contAttrs.onchange = opts.onchange;
-    }
-
     return TreeBuilder.build(h =>
-      h("span", contAttrs
+      h("span", {
+          "class": "myradiobuttons_container"
+        , onchange: opts.onchange
+        }
       , items.map(item =>
           MyRadiobutton.render(name, item, opts.selected)
         )
