@@ -43,7 +43,8 @@ class View {
 
       , h("hr")
       , MyCheckboxes.render(
-          [
+          "mycheckboxes_sample"
+        , [
             { value: 1, label: "item 1" }
           , { value: 2, label: "item 2" }
           , { value: 3, label: "item 3" }

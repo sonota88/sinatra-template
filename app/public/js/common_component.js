@@ -72,7 +72,7 @@ class MyRadiobuttons {
 }
 
 class MyCheckboxes {
-  static render(items, opts){
+  static render(name, items, opts){
     return TreeBuilder.build(h =>
       h("span", {
           "class": "mycheckboxes_container"
@@ -81,7 +81,7 @@ class MyCheckboxes {
       , items.map(item => {
             const attrs = {
               type: "checkbox",
-              name: "sample",
+              name: name,
               value: item.value
             };
             if (
