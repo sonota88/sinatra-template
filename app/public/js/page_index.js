@@ -17,8 +17,8 @@ class View {
       , h("hr")
       , MySelect.render(
           [
-            { value: "1", label: "option 1" }
-          , { value: "2", label: "option 2" }
+            { value: 1, label: "option 1" }
+          , { value: 2, label: "option 2" }
           ]
         , {
             selected: state.optionId

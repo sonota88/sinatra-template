@@ -9,7 +9,7 @@ class MySelect {
       h("select", attrs
       , items.map(item => {
             const optAttrs = { value: item.value };
-            if (item.value === String(opts.selected)) {
+            if (item.value === opts.selected) {
               optAttrs.selected = "selected";
             }
             return h("option", optAttrs, item.label);
