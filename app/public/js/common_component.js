@@ -38,21 +38,20 @@ class MyRadiobuttons {
         , onchange: (ev)=>{ opts.onchange(ev); }
         }
       , items.map(item => {
-            const attrs = {
-              type: "radio",
-              name: name,
-              value: item.value
-            };
-            if (item.value === opts.checked) {
-              attrs.checked = "checked";
-            }
-
-            return h("label", {}
-            , h("input", attrs)
-            , item.label
-            );
+          const attrs = {
+            type: "radio",
+            name: name,
+            value: item.value
+          };
+          if (item.value === opts.checked) {
+            attrs.checked = "checked";
           }
-        )
+
+          return h("label", {}
+          , h("input", attrs)
+          , item.label
+          );
+        })
       )
     );
   }
@@ -79,23 +78,22 @@ class MyCheckboxes {
         , onchange: (ev)=>{ opts.onchange(ev); }
         }
       , items.map(item => {
-            const attrs = {
-              type: "checkbox",
-              name: name,
-              value: item.value
-            };
-            if (
-              opts.checked.includes(item.value)
-            ) {
-              attrs.checked = "checked";
-            }
-
-            return h("label", {}
-            , h("input", attrs)
-            , item.label
-            );
+          const attrs = {
+            type: "checkbox",
+            name: name,
+            value: item.value
+          };
+          if (
+            opts.checked.includes(item.value)
+          ) {
+            attrs.checked = "checked";
           }
-        )
+
+          return h("label", {}
+          , h("input", attrs)
+          , item.label
+          );
+        })
       )
     );
   }
