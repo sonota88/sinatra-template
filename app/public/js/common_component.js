@@ -67,6 +67,11 @@ class MyRadiobutton {
   }
 }
 
+/*
+  opts:
+    selected: Array
+    onchange: (ev) => { ... }
+*/
 class MyRadiobuttons {
   static render(name, items, opts){
     return TreeBuilder.build(h =>
@@ -121,6 +126,11 @@ class MyCheckbox {
   }
 }
 
+/*
+  opts:
+    selected: Array
+    onchange: (ev) => { ... }
+*/
 class MyCheckboxes {
   static render(name, items, opts){
     return TreeBuilder.build(h =>
