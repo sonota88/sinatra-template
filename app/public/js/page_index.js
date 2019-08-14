@@ -25,6 +25,22 @@ class View {
           , onchange: (ev)=>{ __p.onchange_myselect(ev); }
           }
         )
+
+      , h("hr")
+      , MyCheckboxes.render(
+          [
+            { value: 1, label: "item 1" }
+          , { value: 2, label: "item 2" }
+          , { value: 3, label: "item 3" }
+          ]
+        , {
+            checked: state.checkedIds
+          , onchange: (ev)=>{
+              __p.onchange_myCheckboxes(ev);
+            }
+          }
+        )
+
       )
     );
   }
@@ -33,7 +49,8 @@ class View {
 class Page {
   constructor(){
     this.state = {
-      optionId: 2
+      optionId: 2,
+      checkedIds: [1, 3]
     };
   }
 
@@ -80,6 +97,12 @@ class Page {
     const val = $tgt.find("option:selected").val();
     this.state.optionId = parseInt(val);
     puts(this.state);
+  }
+
+  onchange_myCheckboxes(ev){
+    const values = MyCheckboxes.getValues(ev);
+    this.state.checkedIds = values.map(v => parseInt(v));
+    // this.render();
   }
 }
 
