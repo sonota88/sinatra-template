@@ -74,11 +74,15 @@ class MyRadiobutton {
 */
 class MyRadiobuttons {
   static render(name, items, opts){
+    const contAttrs = {
+      "class": "myradiobuttons_container"
+    };
+    if ("onchange" in opts) {
+      contAttrs.onchange = opts.onchange;
+    }
+
     return TreeBuilder.build(h =>
-      h("span", {
-          "class": "myradiobuttons_container"
-        , onchange: (ev)=>{ opts.onchange(ev); }
-        }
+      h("span", contAttrs
       , items.map(item =>
           MyRadiobutton.render(name, item, opts.selected)
         )
@@ -133,11 +137,15 @@ class MyCheckbox {
 */
 class MyCheckboxes {
   static render(name, items, opts){
+    const contAttrs = {
+      "class": "mycheckboxes_container"
+    };
+    if ("onchange" in opts) {
+      contAttrs.onchange = opts.onchange;
+    }
+
     return TreeBuilder.build(h =>
-      h("span", {
-          "class": "mycheckboxes_container"
-        , onchange: (ev)=>{ opts.onchange(ev); }
-        }
+      h("span", contAttrs
       , items.map(item =>
           MyCheckbox.render(name, item, opts.selected)
         )
