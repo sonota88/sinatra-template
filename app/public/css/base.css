@@ -46,3 +46,22 @@ button {
   position: fixed;
   left: 0; top: 0; width: 100%; height: 100%;
 }
+
+/* label */
+
+.label_hl {
+  padding: 0.3rem;
+  margin: 0.3rem;
+  border: solid 0.1rem #eee;
+  border-radius: 0.2rem;
+}
+
+.label_hl:hover {
+  border-color: #aaa;
+  background: #f4f4f4;
+}
+
+.label_selected {
+  border-color: #ccc;
+  background: #cee;
+}

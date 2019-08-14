@@ -38,16 +38,21 @@ class MyRadiobuttons {
         , onchange: (ev)=>{ opts.onchange(ev); }
         }
       , items.map(item => {
+          const checked = (item.value === opts.checked);
+
+          const labelClasses = ["label_hl"];
+          if (checked) { labelClasses.push("label_selected"); }
+
           const attrs = {
             type: "radio",
             name: name,
             value: item.value
           };
-          if (item.value === opts.checked) {
+          if (checked) {
             attrs.checked = "checked";
           }
 
-          return h("label", {}
+          return h("label", { "class": labelClasses.join(" ") }
           , h("input", attrs)
           , item.label
           );
