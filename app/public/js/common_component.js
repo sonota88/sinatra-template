@@ -18,6 +18,11 @@ class MySelect {
       )
     );
   }
+
+  static getValues(ev){
+    const $tgt = $(ev.target);
+    return $tgt.find("option:selected").val();
+  }
 }
 
 class MyCheckboxes {

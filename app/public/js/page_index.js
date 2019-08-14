@@ -93,8 +93,7 @@ class Page {
   }
 
   onchange_myselect(ev){
-    const $tgt = $(ev.target);
-    const val = $tgt.find("option:selected").val();
+    const val = MySelect.getValue(ev);
     this.state.optionId = parseInt(val);
     puts(this.state);
   }
