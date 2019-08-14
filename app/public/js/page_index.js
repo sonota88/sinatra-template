@@ -123,6 +123,7 @@ class Page {
   onchange_myCheckboxes(ev){
     this.state.checkedIds = MyCheckboxes.getValuesAsInt(ev);
     puts(this.state.checkedIds);
+    this.render();
   }
 }
 

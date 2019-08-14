@@ -83,18 +83,21 @@ class MyCheckboxes {
         , onchange: (ev)=>{ opts.onchange(ev); }
         }
       , items.map(item => {
+          const checked = (opts.checked.includes(item.value));
+
+          const labelClasses = ["label_hl"];
+          if (checked) { labelClasses.push("label_selected"); }
+
           const attrs = {
             type: "checkbox",
             name: name,
             value: item.value
           };
-          if (
-            opts.checked.includes(item.value)
-          ) {
+          if (checked) {
             attrs.checked = "checked";
           }
 
-          return h("label", {}
+          return h("label", { "class": labelClasses.join(" ") }
           , h("input", attrs)
           , item.label
           );
