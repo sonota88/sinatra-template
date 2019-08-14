@@ -1,3 +1,5 @@
+// --------------------------------
+
 class MySelect {
   static render(items, opts){
     const attrs = {};
@@ -29,6 +31,8 @@ class MySelect {
     return parseInt(val, 10);
   }
 }
+
+// --------------------------------
 
 class MyRadiobuttons {
   static render(name, items, opts){
@@ -74,6 +78,8 @@ class MyRadiobuttons {
     return parseInt(val, 10);
   }
 }
+
+// --------------------------------
 
 class MyCheckboxes {
   static render(name, items, opts){
