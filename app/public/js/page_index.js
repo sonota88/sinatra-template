@@ -94,11 +94,12 @@ class Page {
 
   onchange_myselect(ev){
     this.state.optionId = MySelect.getValueAsInt(ev);
-    puts(this.state);
+    puts(this.state.optionId);
   }
 
   onchange_myCheckboxes(ev){
     this.state.checkedIds = MyCheckboxes.getValuesAsInt(ev);
+    puts(this.state.checkedIds);
   }
 }
 
