@@ -65,3 +65,8 @@ button {
   border-color: #ccc;
   background: #cee;
 }
+
+.label_selected:hover {
+  border-color: #aaa;
+  background: #b0e4e4;
+}
