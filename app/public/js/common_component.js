@@ -66,4 +66,9 @@ class MyCheckboxes {
     return Array.from($cont.find("input:checked"))
       .map(input => input.value);
   }
+
+  static getValuesAsInt(ev){
+    const vs = MyCheckboxes.getValues(ev);
+    return vs.map(v => parseInt(v, 10));
+  }
 }

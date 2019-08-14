@@ -98,9 +98,7 @@ class Page {
   }
 
   onchange_myCheckboxes(ev){
-    const values = MyCheckboxes.getValues(ev);
-    this.state.checkedIds = values.map(v => parseInt(v));
-    // this.render();
+    this.state.checkedIds = MyCheckboxes.getValuesAsInt(ev);
   }
 }
 
