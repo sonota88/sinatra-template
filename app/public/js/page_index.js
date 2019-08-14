@@ -27,6 +27,20 @@ class View {
         )
 
       , h("hr")
+      , MyRadiobuttons.render(
+          [
+            { value: 1, label: "item 1" }
+          , { value: 2, label: "item 2" }
+          ]
+        , {
+            checked: state.optionId
+          , onchange: (ev)=>{
+              __p.onchange_myRadiobuttons(ev);
+            }
+          }
+        )
+
+      , h("hr")
       , MyCheckboxes.render(
           [
             { value: 1, label: "item 1" }
@@ -95,6 +109,13 @@ class Page {
   onchange_myselect(ev){
     this.state.optionId = MySelect.getValueAsInt(ev);
     puts(this.state.optionId);
+    this.render();
+  }
+
+  onchange_myRadiobuttons(ev){
+    this.state.optionId = MyRadiobuttons.getValueAsInt(ev);
+    puts(this.state.optionId);
+    this.render();
   }
 
   onchange_myCheckboxes(ev){
