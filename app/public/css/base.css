@@ -46,3 +46,28 @@ button {
   position: fixed;
   left: 0; top: 0; width: 100%; height: 100%;
 }
+
+
+/* common component */
+
+.container_label {
+  padding: 0.3rem;
+  margin: 0.3rem;
+  border: solid 0.1rem #eee;
+  border-radius: 0.2rem;
+}
+
+.container_label:hover {
+  border-color: #aaa;
+  background: #f4f4f4;
+}
+
+.container_label_selected {
+  border-color: #ccc;
+  background: #bee;
+}
+
+.container_label_selected:hover {
+  border-color: #aaa;
+  background: #a0e8e8;
+}
