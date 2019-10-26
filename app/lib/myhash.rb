@@ -83,6 +83,18 @@ class Myhash
     is_sym ? new_s.to_sym : new_s
   end
 
+  def self._to_snake_array(xs)
+    xs.map{|x|
+      if x.is_a? Hash
+        Myhash.new(x).to_snake
+      elsif x.is_a? Array
+        Myhash._to_snake_array(x)
+      else
+        x
+      end
+    }
+  end
+
   def to_snake
     new_h = {}
     @h.each{|k, v|
@@ -91,6 +103,8 @@ class Myhash
       new_v =
         if v.is_a? Hash
           Myhash.new(v).to_snake
+        elsif v.is_a? Array
+          Myhash._to_snake_array(v)
         else
           v
         end
@@ -163,4 +177,38 @@ class Myhash
     end
   end
 
+end
+
+if $0 == __FILE__
+  require 'pp'
+
+  hash = {
+    :aa => [
+      [7, 8], # array in array
+      { :bb_cc => 1 }, # obj in array
+      { :dd_ee => [
+          { :ff_gg => 2 },
+          { :hh_ii => 3 }
+        ]
+      }
+    ],
+    :jj_kk => {
+      :ll_mm => 456, # obj in obj
+      :nn_oo => [ # array in obj
+        { :pp_qq => 9 }
+      ]
+    }
+  }
+
+  lcc = Myhash.new(hash)
+        .to_lcc
+        .to_plain
+
+  pp lcc
+
+  snake = Myhash.new(lcc)
+          .to_snake
+          .to_plain
+
+  pp snake
 end
