@@ -25,6 +25,21 @@ class View {
           , onchange: (ev)=>{ __p.onchange_myselect(ev); }
           }
         )
+
+      , h("h2", {}, "radio")
+      , MyRadioGroup.render(
+          "myradiobuttons_sample"
+        , [
+            { value: 1, text: "item 1" }
+          , { value: 2, text: "item 2" }
+          ]
+        , {
+            selected: state.optionId
+          , onchange: (ev)=>{
+              __p.onchange_myRadioGroup(ev);
+            }
+          }
+        )
       )
     );
   }
@@ -77,6 +92,12 @@ class Page {
 
   onchange_myselect(ev){
     this.state.optionId = MySelect.getValueAsInt(ev);
+    puts("optionId => " + this.state.optionId);
+    this.render();
+  }
+
+  onchange_myRadioGroup(ev){
+    this.state.optionId = MyRadioGroup.getValueAsInt(ev);
     puts("optionId => " + this.state.optionId);
     this.render();
   }
