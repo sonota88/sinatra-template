@@ -19,4 +19,4 @@ eval "$(rbenv init -)"
 
 BUNDLE_GEMFILE="../Gemfile"
 
-bundle exec rackup -p $PORT
+bundle exec rackup -p $PORT -o 0.0.0.0
