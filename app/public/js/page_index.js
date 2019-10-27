@@ -40,6 +40,22 @@ class View {
             }
           }
         )
+
+      , h("h2", {}, "checkbox")
+      , MyCheckboxGroup.render(
+          "mycheckboxgroup_sample"
+        , [
+            { value: 1, text: "item 1" }
+          , { value: 2, text: "item 2" }
+          , { value: 3, text: "item 3" }
+          ]
+        , {
+            selected: state.checkedIds
+          , onchange: (ev)=>{
+              __p.onchange_myCheckboxGroup(ev);
+            }
+          }
+        )
       )
     );
   }
@@ -48,7 +64,8 @@ class View {
 class Page {
   constructor(){
     this.state = {
-      optionId: 2
+      optionId: 2,
+      checkedIds: [1, 3]
     };
   }
 
@@ -99,6 +116,12 @@ class Page {
   onchange_myRadioGroup(ev){
     this.state.optionId = MyRadioGroup.getValueAsInt(ev);
     puts("optionId => " + this.state.optionId);
+    this.render();
+  }
+
+  onchange_myCheckboxGroup(ev){
+    this.state.checkedIds = MyCheckboxGroup.getValuesAsInt(ev);
+    puts("checkedIds => ", this.state.checkedIds);
     this.render();
   }
 }

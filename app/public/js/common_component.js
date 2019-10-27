@@ -93,3 +93,67 @@ class MyRadioGroup {
     return parseInt(val, 10);
   }
 }
+
+// --------------------------------
+
+class MyCheckbox {
+  static render(name, item, selectedVals){
+    const selected = (selectedVals.includes(item.value));
+
+    const labelClasses = ["container_label"];
+    if (selected) { labelClasses.push("container_label_selected"); }
+
+    const attrs = {
+      type: "checkbox",
+      name: name,
+      value: item.value
+    };
+    if (selected) {
+      attrs.checked = "checked";
+    }
+
+    return TreeBuilder.build(h =>
+      h("label", { "class": labelClasses.join(" ") }
+      , h("input", attrs)
+      , item.text
+      )
+    );
+  }
+}
+
+/*
+  opts:
+    selected: Array
+    onchange: (ev) => { ... }
+*/
+class MyCheckboxGroup {
+  static render(name, items, opts){
+    const contAttrs = {
+      "class": "mycheckboxgroup_container"
+    };
+    if ("onchange" in opts) {
+      contAttrs.onchange = opts.onchange;
+    }
+
+    return TreeBuilder.build(h =>
+      h("span", contAttrs
+      , items.map(item =>
+          MyCheckbox.render(name, item, opts.selected)
+        )
+      )
+    );
+  }
+
+  static getValues(ev){
+    const $tgt = $(ev.target);
+    const $cont = $tgt.closest(".mycheckboxgroup_container");
+
+    return Array.from($cont.find("input:checked"))
+      .map(input => input.value);
+  }
+
+  static getValuesAsInt(ev){
+    const vs = MyCheckboxGroup.getValues(ev);
+    return vs.map(v => parseInt(v, 10));
+  }
+}
