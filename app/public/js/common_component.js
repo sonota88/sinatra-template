@@ -157,3 +157,29 @@ class MyCheckboxGroup {
     return vs.map(v => parseInt(v, 10));
   }
 }
+
+// --------------------------------
+
+class MyToggleCheckbox {
+  static render(checked, text, onchange){
+    const labelClasses = ["container_label"];
+    if (checked) { labelClasses.push("container_label_selected"); }
+
+    const attrs = {
+      type: "checkbox",
+      onchange
+    };
+    if (checked) { attrs.checked = "checked"; }
+
+    return TreeBuilder.build(h =>
+      h("label", { "class": labelClasses.join(" ") }
+      , h("input", attrs)
+      , text
+      )
+    );
+  }
+
+  static isChecked(ev){
+    return $(ev.target).prop("checked");
+  }
+}

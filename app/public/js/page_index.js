@@ -56,6 +56,16 @@ class View {
             }
           }
         )
+
+      , h("h2", {}, "toggle")
+      , MyToggleCheckbox.render(
+          state.toggle
+        , "{text}"
+        , (ev)=>{
+            __p.onchange_myToggleCheckbox(ev);
+          }
+        )
+
       )
     );
   }
@@ -65,7 +75,8 @@ class Page {
   constructor(){
     this.state = {
       optionId: 2,
-      checkedIds: [1, 3]
+      checkedIds: [1, 3],
+      toggle: true
     };
   }
 
@@ -122,6 +133,12 @@ class Page {
   onchange_myCheckboxGroup(ev){
     this.state.checkedIds = MyCheckboxGroup.getValuesAsInt(ev);
     puts("checkedIds => ", this.state.checkedIds);
+    this.render();
+  }
+
+  onchange_myToggleCheckbox(ev){
+    this.state.toggle = MyToggleCheckbox.isChecked(ev);
+    puts("toggle => " + this.state.toggle);
     this.render();
   }
 }
