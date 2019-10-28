@@ -12,7 +12,7 @@ cd "$(__dir__)"
 
 gnome-terminal -e "/bin/bash -c
   \"
-    ./_up.sh $1
+    ./run.sh up $1
     if [ \$? -ne 0 ]; then
       sleep 60
     fi

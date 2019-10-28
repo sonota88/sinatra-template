@@ -11,4 +11,4 @@ __dir__() {
 cd "$(__dir__)"
 
 APP_ENV=production \
-  ./_up.sh "$@"
+  ./run.sh up "$@"
