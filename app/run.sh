@@ -12,7 +12,7 @@ echo_rbenv_root(){
 }
 
 cmd_up(){
-  PORT=$1
+  local port=$1
 
   export RBENV_ROOT="$(echo_rbenv_root)"
   export PATH="${RBENV_ROOT}/bin:${PATH}"
@@ -20,13 +20,13 @@ cmd_up(){
 
   BUNDLE_GEMFILE="../Gemfile"
 
-  bundle exec rackup -p $PORT -o 0.0.0.0
+  bundle exec rackup -p $port -o 0.0.0.0
 }
 
 cmd_down(){
-  PORT=$1
+  local port=$1
 
-  curl http://localhost:${PORT}/shutdown
+  curl http://localhost:${port}/shutdown
 }
 
 cmd="$1"; shift
