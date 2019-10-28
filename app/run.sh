@@ -12,15 +12,15 @@ echo_rbenv_root(){
 }
 
 cmd_up(){
-PORT=$1
+  PORT=$1
 
-export RBENV_ROOT="$(echo_rbenv_root)"
-export PATH="${RBENV_ROOT}/bin:${PATH}"
-eval "$(rbenv init -)"
+  export RBENV_ROOT="$(echo_rbenv_root)"
+  export PATH="${RBENV_ROOT}/bin:${PATH}"
+  eval "$(rbenv init -)"
 
-BUNDLE_GEMFILE="../Gemfile"
+  BUNDLE_GEMFILE="../Gemfile"
 
-bundle exec rackup -p $PORT -o 0.0.0.0
+  bundle exec rackup -p $PORT -o 0.0.0.0
 }
 
 cmd="$1"; shift
