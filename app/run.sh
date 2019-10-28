@@ -11,8 +11,16 @@ echo_rbenv_root(){
   fi
 }
 
+echo_port(){
+  if [ "$1" != "" ]; then
+    echo "$1"
+  else
+    echo "9000" # default
+  fi
+}
+
 cmd_up(){
-  local port=$1
+  local port="$1"; shift
 
   export RBENV_ROOT="$(echo_rbenv_root)"
   export PATH="${RBENV_ROOT}/bin:${PATH}"
@@ -24,7 +32,7 @@ cmd_up(){
 }
 
 cmd_down(){
-  local port=$1
+  local port="$1"; shift
 
   curl http://localhost:${port}/shutdown
 }
@@ -32,10 +40,12 @@ cmd_down(){
 cmd="$1"; shift
 case $cmd in
   up)
-    cmd_up "$@"
+    port=$(echo_port "$1"); shift
+    cmd_up "$port" "$@"
     ;;
   down)
-    cmd_down "$@"
+    port=$(echo_port "$1"); shift
+    cmd_down "$port" "$@"
     ;;
   *)
     echo "invalid command" >&2
