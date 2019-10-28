@@ -11,6 +11,7 @@ echo_rbenv_root(){
   fi
 }
 
+cmd_up(){
 PORT=$1
 
 export RBENV_ROOT="$(echo_rbenv_root)"
@@ -20,3 +21,15 @@ eval "$(rbenv init -)"
 BUNDLE_GEMFILE="../Gemfile"
 
 bundle exec rackup -p $PORT -o 0.0.0.0
+}
+
+cmd="$1"; shift
+case $cmd in
+  up)
+    cmd_up "$@"
+    ;;
+  *)
+    echo "invalid command" >&2
+    exit 1
+    ;;
+esac
