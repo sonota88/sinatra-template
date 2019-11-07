@@ -22,4 +22,8 @@
 
     <div id="tree_builder_container"></div>
 
+    <% if __use_webpack %>
+    <script src="/js/webpack/page_index.js"></script>
+    <% else %>
     <script src="/js/page_index.js"></script>
+    <% end %>

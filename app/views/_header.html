@@ -9,9 +9,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     -->
 
-    <% if __use_webpack %>
-    <script src="/js/webpack/page_index.js"></script>
-    <% else %>
+    <% unless __use_webpack %>
     <script src="/js_ext/jquery.js"></script>
     <script src="/js/common.js"></script>
     <script src="/js/common_component.js"></script>
