@@ -1,3 +1,5 @@
+import { TreeBuilder } from './tree_builder';
+
 class MyOption {
   static render(item, selectedVal){
     const attrs = { value: item.value };

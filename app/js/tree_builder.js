@@ -1,4 +1,4 @@
-class TreeBuilder {
+export class TreeBuilder {
   static _appendChild(parent, child){
     if (child == null) {
       return;

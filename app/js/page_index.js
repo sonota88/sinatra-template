@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import { __g, puts } from './common';
+import { TreeBuilder } from './tree_builder';
 
 class View {
   static render(state){
