@@ -4,7 +4,7 @@ module.exports = {
   mode: "development",
   devtool: "source-map",
   entry: {
-    "page_index": "./js/page_index.js",
+    "page_index": "./ts/page_index.ts",
     // "common": "./js/common.js"
   },
   output: {
@@ -17,5 +17,8 @@ module.exports = {
       jQuery: 'jquery',
       'window.jQuery': 'jquery'
     })
-  ]
+  ],
+  resolve: {
+    extensions: [".ts"]
+  }
 };
