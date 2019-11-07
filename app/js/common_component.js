@@ -13,7 +13,7 @@ class MyOption {
   }
 }
 
-class MySelect {
+export class MySelect {
   static render(items, opts){
     return TreeBuilder.build(h =>
       h("select", {
@@ -69,7 +69,7 @@ class MyRadio {
     selected: Array
     onchange: (ev) => { ... }
 */
-class MyRadioGroup {
+export class MyRadioGroup {
   static render(name, items, opts){
     return TreeBuilder.build(h =>
       h("span", {
@@ -128,7 +128,7 @@ class MyCheckbox {
     selected: Array
     onchange: (ev) => { ... }
 */
-class MyCheckboxGroup {
+export class MyCheckboxGroup {
   static render(name, items, opts){
     const contAttrs = {
       "class": "mycheckboxgroup_container"
@@ -162,7 +162,7 @@ class MyCheckboxGroup {
 
 // --------------------------------
 
-class MyToggleCheckbox {
+export class MyToggleCheckbox {
   static render(checked, text, onchange){
     const labelClasses = ["container_label"];
     if (checked) { labelClasses.push("container_label_selected"); }

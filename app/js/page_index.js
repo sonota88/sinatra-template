@@ -1,6 +1,12 @@
 import $ from 'jquery';
 import { __g, puts } from './common';
 import { TreeBuilder } from './tree_builder';
+import {
+  MySelect
+  ,MyRadioGroup
+  ,MyCheckboxGroup
+  ,MyToggleCheckbox
+} from './common_component';
 
 class View {
   static render(state){
