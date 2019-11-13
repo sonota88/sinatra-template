@@ -55,6 +55,7 @@ button {
   margin: 0.3rem;
   border: solid 0.1rem #eee;
   border-radius: 0.2rem;
+  user-select: none;
 }
 
 .container_label:hover {
