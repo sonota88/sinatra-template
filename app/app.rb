@@ -62,7 +62,7 @@ end
 
 def _render(name, context)
   if $PROFILE == :prod
-    if $TEMPLATE_CACHE.has_key?(name)
+    if $TEMPLATE_CACHE.key?(name)
       ;
     else
       load_template(name)

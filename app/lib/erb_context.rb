@@ -4,7 +4,7 @@ class ErbContext
   end
 
   def method_missing(name, *args)
-    if @params.has_key? name
+    if @params.key? name
       @params[name]
     else
       raise "unknown key (#{name})"
