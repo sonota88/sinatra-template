@@ -5,7 +5,7 @@ class Myhash
   end
 
   def self._to_plain_array(xs)
-    xs.map{|x|
+    xs.map{ |x|
       if x.is_a? Myhash
         x.to_plain
       elsif x.is_a? Array
@@ -19,7 +19,7 @@ class Myhash
   def to_plain
     new_h = {}
 
-    @h.each{|k, v|
+    @h.each{ |k, v|
       new_v =
         if v.is_a? Myhash
           v.to_plain
@@ -84,7 +84,7 @@ class Myhash
   end
 
   def self._to_snake_array(xs)
-    xs.map{|x|
+    xs.map{ |x|
       if x.is_a? Hash
         Myhash.new(x).to_snake
       elsif x.is_a? Array
@@ -97,7 +97,7 @@ class Myhash
 
   def to_snake
     new_h = {}
-    @h.each{|k, v|
+    @h.each{ |k, v|
       new_k = Myhash._to_snake(k)
 
       new_v =
@@ -126,14 +126,14 @@ class Myhash
     new_s =
       words[0] +
       words[1..-1]
-        .map{|word| word.capitalize }
+        .map{ |word| word.capitalize }
         .join("")
 
     is_sym ? new_s.to_sym : new_s
   end
 
   def self._to_lcc_array(xs)
-    xs.map{|x|
+    xs.map{ |x|
       if x.is_a? Hash
         Myhash.new(x).to_lcc
       elsif x.is_a? Array
@@ -146,7 +146,7 @@ class Myhash
 
   def to_lcc
     new_h = {}
-    @h.each{|k, v|
+    @h.each{ |k, v|
       new_k = Myhash._to_lcc(k)
 
       new_v =

@@ -37,15 +37,15 @@ $PROFILE =
 
 
 def puts_e(*args)
-  args.each{|arg| $stderr.puts arg }
+  args.each{ |arg| $stderr.puts arg }
 end
 
 def p_e(*args)
-  args.each{|arg| $stderr.puts arg.inspect }
+  args.each{ |arg| $stderr.puts arg.inspect }
 end
 
 def pp_e(*args)
-  args.each{|arg| $stderr.puts arg.pretty_inspect }
+  args.each{ |arg| $stderr.puts arg.pretty_inspect }
 end
 
 $TEMPLATE_CACHE = {}
