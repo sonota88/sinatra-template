@@ -108,7 +108,7 @@ def _api_v2(params)
   }
 
   begin
-    api_params = Myhash.new( JSON.parse(params[:_params]) )
+    api_params = Myhash.new( JSON.parse(params["_params"]) )
                  .to_sym_key
                  .to_snake
                  .to_plain
@@ -162,15 +162,19 @@ get "/shutdown" do
   end
 end
 
-get "/api/sample" do
-  _api_v2(params) do |_params|
+post "/api/sample" do
+  body = request.body.read
+  body_params = JSON.parse(body)
+
+  _api_v2(body_params) do |_params|
     puts_e "-->> GET /api/sample"
     {
       :aa => 321,
       :aa_bb => {
         :cc_dd => 456
       },
-      :_params => _params
+      :_params => _params,
+      :value => Time.now.to_i,
     }
   end
 end
