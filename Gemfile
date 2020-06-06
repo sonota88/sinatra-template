@@ -3,6 +3,8 @@ source "https://rubygems.org"
 
 gem "sinatra", "2.0.5"
 gem "sinatra-contrib", "2.0.5"
+gem "ovto"
+gem "ifchanged"
 
 # development
 gem "rake", require: false
