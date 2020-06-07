@@ -1,1 +1,1 @@
-# sinatra-skelton
+# sinatra-template
