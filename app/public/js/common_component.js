@@ -64,7 +64,7 @@ class MyRadio {
 
 /*
   opts:
-    selected: Array
+    selected: single value
     onchange: (ev) => { ... }
 */
 class MyRadioGroup {
