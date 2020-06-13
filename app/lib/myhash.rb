@@ -5,7 +5,7 @@ class Myhash
   end
 
   def self._to_plain_array(xs)
-    xs.map{ |x|
+    xs.map do |x|
       if x.is_a? Myhash
         x.to_plain
       elsif x.is_a? Array
@@ -13,13 +13,13 @@ class Myhash
       else
         x
       end
-    }
+    end
   end
 
   def to_plain
     new_h = {}
 
-    @h.each{ |k, v|
+    @h.each do |k, v|
       new_v =
         if v.is_a? Myhash
           v.to_plain
@@ -29,7 +29,7 @@ class Myhash
           v
         end
       new_h[k] = new_v
-    }
+    end
 
     new_h
   end
@@ -84,7 +84,7 @@ class Myhash
   end
 
   def self._to_snake_array(xs)
-    xs.map{ |x|
+    xs.map do |x|
       if x.is_a? Hash
         Myhash.new(x).to_snake
       elsif x.is_a? Array
@@ -92,12 +92,12 @@ class Myhash
       else
         x
       end
-    }
+    end
   end
 
   def to_snake
     new_h = {}
-    @h.each{ |k, v|
+    @h.each do |k, v|
       new_k = Myhash._to_snake(k)
 
       new_v =
@@ -110,7 +110,7 @@ class Myhash
         end
 
       new_h[new_k] = new_v
-    }
+    end
 
     Myhash.new(new_h)
   end
@@ -133,7 +133,7 @@ class Myhash
   end
 
   def self._to_lcc_array(xs)
-    xs.map{ |x|
+    xs.map do |x|
       if x.is_a? Hash
         Myhash.new(x).to_lcc
       elsif x.is_a? Array
@@ -141,12 +141,12 @@ class Myhash
       else
         x
       end
-    }
+    end
   end
 
   def to_lcc
     new_h = {}
-    @h.each{ |k, v|
+    @h.each do |k, v|
       new_k = Myhash._to_lcc(k)
 
       new_v =
@@ -159,7 +159,7 @@ class Myhash
         end
 
       new_h[new_k] = new_v
-    }
+    end
 
     Myhash.new(new_h)
   end
