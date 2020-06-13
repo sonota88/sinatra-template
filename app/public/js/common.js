@@ -70,5 +70,9 @@ const __g = {
       page.init();
       document.title = page.getTitle() + " | {app_name}";
     });
+  },
+
+  pad2: (n)=>{
+    return (n < 10 ? "0" : "") + n;
   }
 };
