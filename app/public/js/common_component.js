@@ -25,8 +25,7 @@ class MySelect {
   }
 
   static getValue(ev){
-    const $tgt = $(ev.target);
-    return $tgt.find("option:selected").val();
+    return ev.target.value;
   }
 
   static getValueAsInt(ev){
