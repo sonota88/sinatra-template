@@ -180,7 +180,7 @@ class Myhash
 end
 
 if $0 == __FILE__
-  require 'pp'
+  require "pp"
 
   hash = {
     :aa => [
