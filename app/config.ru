@@ -25,6 +25,6 @@ if ENV["APP_ENV"] == "production"
   )
 end
 
-require "./app.rb"
+require_relative "app"
 
 run Sinatra::Application
