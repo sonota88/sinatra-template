@@ -1,3 +1,15 @@
+/* web font example
+
+@font-face {
+    font-family: "vl_gothic";
+    src: url("/font/VL-Gothic-Regular.woff") format("woff");
+}
+
+* {
+  font-family: vl_gothic, monospace;
+}
+*/
+
 * {
   line-height: 150%;
   box-sizing: border-box;
