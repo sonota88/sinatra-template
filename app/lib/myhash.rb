@@ -72,7 +72,7 @@ class Myhash
 
     new_s = s.chars
       .map do |c|
-        if /^[A-Z]$/ =~ c
+        if /^[A-Z]$/.match? c
           "_" + c.downcase
         else
           c
