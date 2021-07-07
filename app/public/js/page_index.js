@@ -1,6 +1,8 @@
+const h = TreeBuilder.h;
+
 class View {
   static render(state){
-    return TreeBuilder.build(h =>
+    return (
       h("div", {}
       , h("button", {}, "OK")
       , h("input", { type: "checkbox" })
