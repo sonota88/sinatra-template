@@ -8,7 +8,6 @@ set :method_override, true
 require "pp"
 require "json"
 
-require "./lib/erb_context"
 require "./lib/myhash"
 
 $PROFILE =
@@ -71,7 +70,7 @@ def _render(name, context)
   end
 
   erb = $TEMPLATE_CACHE[name]
-  erb.result ErbContext.hash_to_binding(context)
+  erb.result_with_hash context
 end
 
 
@@ -180,7 +179,6 @@ get "/api/reload_libs" do
 
     return {} if $PROFILE == :prod
 
-    load "./lib/erb_context.rb"
     load "./lib/myhash.rb"
 
     {}
