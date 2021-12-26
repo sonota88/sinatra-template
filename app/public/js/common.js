@@ -74,5 +74,18 @@ const __g = {
 
   pad2: (n)=>{
     return (n < 10 ? "0" : "") + n;
+  },
+
+  refreshInputStyle: () => {
+    const inputs = document.querySelectorAll("input[type=radio], input[type=checkbox]");
+    inputs.forEach(input => {
+      if (input.parentNode.tagName === "LABEL") {
+        input.parentNode.classList.remove("container_label_selected");
+        if (input.checked) {
+          input.parentNode.classList.add("container_label_selected");
+        }
+      }
+    });
   }
+
 };
