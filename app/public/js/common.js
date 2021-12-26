@@ -76,6 +76,21 @@ const __g = {
     return (n < 10 ? "0" : "") + n;
   },
 
+  _debounceMap: {}, // fn => timer
+  debounce: (fn, msec) => {
+    if(__g._debounceMap[fn] != null){
+      clearTimeout(__g._debounceMap[fn]);
+    }
+
+    __g._debounceMap[fn] = setTimeout(
+      ()=>{
+        fn();
+        __g._debounceMap[fn] = null;
+      },
+      msec
+    );
+  },
+
   refreshInputStyle: () => {
     const inputs = document.querySelectorAll("input[type=radio], input[type=checkbox]");
     inputs.forEach(input => {
