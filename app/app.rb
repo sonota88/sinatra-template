@@ -132,6 +132,13 @@ def _api_v2(params)
   })
 end
 
+get "/js/weblib/:file" do
+  proj_dir = File.expand_path("..", __dir__)
+  js_path = File.join(proj_dir, "weblib/js", params["file"])
+  content_type "application/javascript"
+  File.read(js_path)
+end
+
 get "/" do
   redirect to("/my_app/")
 end
