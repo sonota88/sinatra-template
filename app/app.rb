@@ -8,8 +8,8 @@ set :method_override, true
 require "pp"
 require "json"
 
-require "./lib/erb_context"
-require "./lib/myhash"
+require_relative "lib/erb_context"
+require_relative "lib/myhash"
 
 $PROFILE =
   if settings.production?
