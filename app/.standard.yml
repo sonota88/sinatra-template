@@ -1,0 +1,19 @@
+ignore:
+  - "**/*":
+    - Layout/ArrayAlignment
+    - Layout/FirstArrayElementIndentation
+    - Layout/MultilineHashBraceLayout
+    - Layout/MultilineMethodCallIndentation
+    - Layout/SpaceInsideHashLiteralBraces
+    - Layout/SpaceInsideParens
+    - Layout/SpaceInsideStringInterpolation
+    - Lint/UnderscorePrefixedVariableName
+    - Style/GlobalVars
+    - Style/HashSyntax
+    - Style/Semicolon
+    - Style/SlicingWithRange
+    - Style/StderrPuts
+    # TODO
+    - Layout/EmptyLinesAroundClassBody
+    - Layout/SpaceBeforeBlockBraces
+    - Style/MissingRespondToMissing
