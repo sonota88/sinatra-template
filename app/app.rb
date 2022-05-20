@@ -34,7 +34,6 @@ $PROFILE =
 # end
 # set :server_settings, server_settings
 
-
 def puts_e(*args)
   args.each{ |arg| $stderr.puts arg }
 end
@@ -73,7 +72,6 @@ def _render(name, context)
   erb = $TEMPLATE_CACHE[name]
   erb.result ErbContext.hash_to_binding(context)
 end
-
 
 def _api(params)
   result = {}
