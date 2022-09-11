@@ -5,8 +5,9 @@ class MyOption {
       attrs.selected = "selected";
     }
 
+    const text = item.text || item.value; // text is optional
     return TreeBuilder.build(h =>
-      h("option", attrs, item.text)
+      h("option", attrs, text)
     );
   }
 }
