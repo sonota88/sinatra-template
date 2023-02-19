@@ -21,6 +21,7 @@ GEM
       sinatra (= 3.0.4)
       tilt (~> 2.0)
     tilt (2.0.11)
+    webrick (1.8.1)
 
 PLATFORMS
   ruby
@@ -29,6 +30,7 @@ DEPENDENCIES
   rake
   sinatra (= 3.0.4)
   sinatra-contrib (= 3.0.4)
+  webrick (~> 1.8)
 
 BUNDLED WITH
-   2.1.4
+   2.2.22

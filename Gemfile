@@ -7,3 +7,5 @@ gem "sinatra-contrib", "3.0.4"
 
 # development
 gem "rake", require: false
+
+gem "webrick", "~> 1.8"
