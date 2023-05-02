@@ -1,6 +1,8 @@
+const h = VDom.h;
+
 class View {
   static render(state){
-    return TreeBuilder.build(h =>
+    return (
       h("div", {}
       , h("button", {}, "OK")
       , h("input", { type: "checkbox" })
@@ -10,7 +12,7 @@ class View {
           }
         , "reload libs"
         )
-      , TreeBuilder.buildRawHtml('aa <em>em</em> bb <span onclick="alert(123)">click</span>')
+      , new VDom.RawHtmlVNode('aa <em>em</em> bb <span onclick="alert(123)">click</span>')
 
       , h("hr")
 
@@ -71,8 +73,10 @@ class View {
   }
 }
 
-class Page {
-  constructor(){
+class Page extends VDom.App {
+  constructor(sel){
+    super(Page.render.bind(Page), sel);
+
     this.state = {
       optionId: 2,
       checkedIds: [1, 3],
@@ -103,7 +107,7 @@ class Page {
       puts(result);
       Object.assign(this.state, result);
 
-      this.render();
+      this.update();
 
     }, (errors)=>{
       __g.unguard();
@@ -112,36 +116,33 @@ class Page {
     });
   }
 
-  render(){
-    $("#tree_builder_container")
-      .empty()
-      .append(View.render(this.state));
-    __g.refreshInputStyle();
+  static render(){
+    return View.render(__p.state);
   }
 
   onchange_myselect(ev){
     this.state.optionId = MySelect.getValueAsInt(ev);
     puts("optionId => " + this.state.optionId);
-    this.render();
+    this.update();
   }
 
   onchange_myRadioGroup(ev){
     this.state.optionId = MyRadioGroup.getValueAsInt(ev);
     puts("optionId => " + this.state.optionId);
-    this.render();
+    this.update();
   }
 
   onchange_myCheckboxGroup(ev){
     this.state.checkedIds = MyCheckboxGroup.getValuesAsInt(ev);
     puts("checkedIds => ", this.state.checkedIds);
-    __g.refreshInputStyle();
+    this.update();
   }
 
   onchange_myToggleCheckbox(ev){
     this.state.toggle = MyToggleCheckbox.isChecked(ev);
     puts("toggle => " + this.state.toggle);
-    __g.refreshInputStyle();
+    this.update();
   }
 }
 
-__g.ready(new Page());
+__g.ready(new Page("#main_container"));

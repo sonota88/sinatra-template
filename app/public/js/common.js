@@ -91,6 +91,7 @@ const __g = {
     );
   },
 
+  /*
   refreshInputStyle: () => {
     const inputs = document.querySelectorAll("input[type=radio], input[type=checkbox]");
     inputs.forEach(input => {
@@ -102,5 +103,6 @@ const __g = {
       }
     });
   }
+  */
 
 };

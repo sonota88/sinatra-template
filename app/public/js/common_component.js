@@ -6,7 +6,7 @@ class MyOption {
     }
 
     const text = item.text || item.value; // text is optional
-    return TreeBuilder.build(h =>
+    return (
       h("option", attrs, text)
     );
   }
@@ -14,7 +14,7 @@ class MyOption {
 
 class MySelect {
   static render(items, opts){
-    return TreeBuilder.build(h =>
+    return (
       h("select", {
           onchange: opts.onchange
         }
@@ -53,7 +53,7 @@ class MyRadio {
       attrs.checked = "checked";
     }
 
-    return TreeBuilder.build(h =>
+    return (
       h("label", { "class": labelClasses.join(" ") }
       , h("input", attrs)
       , item.text
@@ -69,7 +69,7 @@ class MyRadio {
 */
 class MyRadioGroup {
   static render(name, items, opts){
-    return TreeBuilder.build(h =>
+    return (
       h("span", {
           "class": "myradiogroup_container"
         , onchange: opts.onchange
@@ -112,7 +112,7 @@ class MyCheckbox {
       attrs.checked = "checked";
     }
 
-    return TreeBuilder.build(h =>
+    return (
       h("label", { "class": labelClasses.join(" ") }
       , h("input", attrs)
       , item.text
@@ -135,7 +135,7 @@ class MyCheckboxGroup {
       contAttrs.onchange = opts.onchange;
     }
 
-    return TreeBuilder.build(h =>
+    return (
       h("span", contAttrs
       , items.map(item =>
           MyCheckbox.render(name, item, opts.selected)
@@ -171,7 +171,7 @@ class MyToggleCheckbox {
     };
     if (checked) { attrs.checked = "checked"; }
 
-    return TreeBuilder.build(h =>
+    return (
       h("label", { "class": labelClasses.join(" ") }
       , h("input", attrs)
       , text
