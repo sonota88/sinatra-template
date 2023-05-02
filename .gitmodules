@@ -1,0 +1,3 @@
+[submodule "weblib"]
+	path = weblib
+	url = https://gitlab.com/sonota88/weblib.git
