@@ -1,3 +1,7 @@
+import { foo } from "./page_index_sub.js";
+
+foo();
+
 class View {
   static render(state){
     return TreeBuilder.build(h =>
