@@ -37,7 +37,12 @@ cmd_down(){
   curl http://localhost:${port}/shutdown
 }
 
-cmd="$1"; shift
+if [ $# -ge 1 ]; then
+  cmd="$1"; shift
+else
+  cmd="up"
+fi
+
 case $cmd in
   up)
     port=$(echo_port "$1"); shift
