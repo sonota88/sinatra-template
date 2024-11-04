@@ -2,10 +2,11 @@
 
 source "https://rubygems.org"
 
-gem "sinatra", "3.0.4"
-gem "sinatra-contrib", "3.0.4"
+gem "sinatra", "4.0.0"
+gem "sinatra-contrib", "4.0.0"
 
 # development
 gem "rake", require: false
 
 gem "webrick", "~> 1.8"
+gem "rackup", "~> 2.2"
