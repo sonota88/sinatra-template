@@ -127,6 +127,12 @@ def _api_v2(params)
   })
 end
 
+# Sinatraでfaviconへのアクセスを無視する - patorashのブログ
+# https://patorash.hatenablog.com/entry/2024/09/27/230402
+# before '/favicon.ico' do
+#   halt 204
+# end
+
 get "/js/weblib/:file" do
   proj_dir = File.expand_path("..", __dir__)
   js_path = File.join(proj_dir, "weblib/js", params["file"])
