@@ -2,8 +2,8 @@
 
 source "https://rubygems.org"
 
-gem "sinatra", "4.0.0"
-gem "sinatra-contrib", "4.0.0"
+gem "sinatra", "4.1.0"
+gem "sinatra-contrib", "4.1.0"
 
 # development
 gem "rake", require: false
