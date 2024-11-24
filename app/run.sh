@@ -28,7 +28,12 @@ cmd_up(){
 
   BUNDLE_GEMFILE="../Gemfile"
 
-  bundle exec rackup -p $port -o 0.0.0.0
+  if [ "$APP_ENV" = "development" ]; then
+    # sudo sysctl fs.inotify.max_user_instances=512
+    bundle exec rerun -- rackup -p $port -o 0.0.0.0
+  else
+    bundle exec rackup -p $port -o 0.0.0.0
+  fi
 }
 
 cmd_down(){
@@ -47,6 +52,10 @@ case $cmd in
   up)
     port=$(echo_port "$1"); shift
     cmd_up "$port" "$@"
+    ;;
+  up-devel)
+    port=$(echo_port "$1"); shift
+    APP_ENV=development cmd_up "$port" "$@"
     ;;
   down)
     port=$(echo_port "$1"); shift

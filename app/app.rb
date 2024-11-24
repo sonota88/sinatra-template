@@ -1,8 +1,5 @@
 require "sinatra"
 
-# デフォルトでは development でだけ有効になる
-require "sinatra/reloader"
-
 set :method_override, true
 
 require "pp"
