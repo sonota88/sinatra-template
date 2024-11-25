@@ -116,7 +116,6 @@ class Page {
     $("#tree_builder_container")
       .empty()
       .append(View.render(this.state));
-    __g.refreshInputStyle();
   }
 
   onchange_myselect(ev){
@@ -134,13 +133,11 @@ class Page {
   onchange_myCheckboxGroup(ev){
     this.state.checkedIds = MyCheckboxGroup.getValuesAsInt(ev);
     puts("checkedIds => ", this.state.checkedIds);
-    __g.refreshInputStyle();
   }
 
   onchange_myToggleCheckbox(ev){
     this.state.toggle = MyToggleCheckbox.isChecked(ev);
     puts("toggle => " + this.state.toggle);
-    __g.refreshInputStyle();
   }
 }
 

@@ -42,7 +42,6 @@ class MyRadio {
     const selected = (item.value === selectedVal);
 
     const labelClasses = ["container_label"];
-    if (selected) { labelClasses.push("container_label_selected"); }
 
     const attrs = {
       type: "radio",
@@ -101,7 +100,6 @@ class MyCheckbox {
     const selected = (selectedVals.includes(item.value));
 
     const labelClasses = ["container_label"];
-    if (selected) { labelClasses.push("container_label_selected"); }
 
     const attrs = {
       type: "checkbox",
@@ -163,7 +161,6 @@ class MyCheckboxGroup {
 class MyToggleCheckbox {
   static render(checked, text, onchange){
     const labelClasses = ["container_label"];
-    if (checked) { labelClasses.push("container_label_selected"); }
 
     const attrs = {
       type: "checkbox",
