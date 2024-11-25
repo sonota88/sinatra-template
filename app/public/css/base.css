@@ -89,12 +89,12 @@ button {
   background: #f4f4f4;
 }
 
-.container_label_selected {
+.container_label:has(input:checked) {
   border-color: #ccc;
   background: #bee;
 }
 
-.container_label_selected:hover {
+.container_label:has(input:checked):hover {
   border-color: #aaa;
   background: #a0e8e8;
 }
