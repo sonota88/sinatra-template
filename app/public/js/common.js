@@ -3,6 +3,14 @@ function puts(... args) {
 }
 
 const __g = {
+  qs: (sel, base = document) => {
+    return base.querySelector(sel);
+  },
+
+  qsa: (sel, base = document) => {
+    return base.querySelectorAll(sel);
+  },
+
   api: function(method, path, data, fnOk, fnNg) {
     var _data = {
       _method: method.toUpperCase()
