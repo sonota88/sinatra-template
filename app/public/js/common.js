@@ -11,6 +11,7 @@ const __g = {
     return base.querySelectorAll(sel);
   },
 
+  /** deprecated */
   api: function(method, path, data, fnOk, fnNg) {
     var _data = {
       _method: method.toUpperCase()
@@ -25,6 +26,7 @@ const __g = {
     });
   },
 
+  /** deprecated */
   api_v2: (method, path, data, fnOk, fnNg)=>{
     const req = new Request(path);
 
@@ -54,6 +56,41 @@ const __g = {
     });
   },
 
+  async_api_v1: async (method, path, data)=>{
+    const req = new Request(path);
+
+    const fd = new FormData();
+    fd.append("_method", method.toUpperCase());
+    fd.append("_params", JSON.stringify(data));
+
+    return fetch(
+      req,
+      {
+        method: 'POST',
+        body: fd,
+        credentials: 'include', // cookie をリクエストに含める
+      }
+    )
+      .then((resp)=>{
+        if (resp.ok) {
+          puts("resp.ok == true", resp);
+        } else {
+          puts("resp.ok != true", resp);
+        }
+        return resp.json();
+      })
+      .then((resp)=>{
+        puts(81, resp);
+        if (resp.errors.length === 0) {
+          // ok
+          return resp.result;
+        } else {
+          throw resp.errors;
+        }
+      })
+    ;
+  },
+
   guard: ()=>{
     $("#guard_layer").show();
   },
@@ -74,8 +111,8 @@ const __g = {
 
   ready: (page)=>{
     window.__p = page;
-    document.addEventListener("DOMContentLoaded", ()=>{
-      page.init();
+    document.addEventListener("DOMContentLoaded", async ()=>{
+      await page.init();
       document.title = page.getTitle() + " | {app_name}";
     });
   },

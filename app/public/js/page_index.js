@@ -94,22 +94,29 @@ class Page {
     });
   }
 
-  init(){
+  async init(){
     puts("init");
-    __g.api_v2("get", "/api/sample", {
-        fooBar: 123, b: { c: 456 }
-      }, (result)=>{
-      __g.unguard();
-      puts(result);
-      Object.assign(this.state, result);
 
-      this.render();
-
-    }, (errors)=>{
+    let result;
+    try {
+      result = await __g.async_api_v1(
+        "get", "/api/sample",
+        {
+          fooBar: 123, b: { c: 456 }
+        }
+      );
+    } catch (errors) {
       __g.unguard();
       __g.printApiErrors(errors);
       alert("Check console.");
-    });
+      throw errors;
+    }
+
+    __g.unguard();
+    puts(result);
+    Object.assign(this.state, result);
+
+    this.render();
   }
 
   render(){
