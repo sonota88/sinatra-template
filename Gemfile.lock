@@ -2,10 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     base64 (0.3.0)
-    ffi (1.17.0)
-    listen (3.9.0)
-      rb-fsevent (~> 0.10, >= 0.10.3)
-      rb-inotify (~> 0.9, >= 0.9.10)
+    ifchanged (1.0.1)
     logger (1.7.0)
     mustermann (3.0.4)
       ruby2_keywords (~> 0.0.1)
@@ -20,11 +17,6 @@ GEM
     rackup (2.2.0)
       rack (>= 3)
     rake (13.2.1)
-    rb-fsevent (0.11.2)
-    rb-inotify (0.11.1)
-      ffi (~> 1.0)
-    rerun (0.14.0)
-      listen (~> 3.0)
     ruby2_keywords (0.0.5)
     sinatra (4.2.0)
       logger (>= 1.6.0)
@@ -40,9 +32,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ifchanged (= 1.0.1)
   rackup (~> 2.2)
   rake
-  rerun (~> 0.14.0)
   sinatra (= 4.2.0)
   webrick (~> 1.8)
 

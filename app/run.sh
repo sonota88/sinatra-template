@@ -30,7 +30,12 @@ cmd_up(){
 
   if [ "$APP_ENV" = "development" ]; then
     # sudo sysctl fs.inotify.max_user_instances=512
-    bundle exec rerun -- rackup -p $port -o 0.0.0.0
+
+    cmd_restart $port "$@"
+
+    bundle exec ifchanged \
+      --do="bash run.sh restart" \
+      $(pwd)/{run.sh,app.rb}
   else
     bundle exec rackup -p $port -o 0.0.0.0
   fi
@@ -39,7 +44,25 @@ cmd_up(){
 cmd_down(){
   local port="$1"; shift
 
-  curl http://localhost:${port}/shutdown
+  local pid=$(curl --max-time 5 --silent http://localhost:${port}/pid)
+  echo "pid (${pid})" >&2
+
+  if [ "$pid" = "" ]; then
+    return 1
+  else
+    kill $pid
+  fi
+}
+
+cmd_restart() {
+  local port="$1"; shift
+
+  echo "  | -->> down" >&2
+  cmd_down $port "$@"
+  sleep 3
+
+  echo "  | -->> start" >&2
+  bundle exec rackup -p $port -o 0.0.0.0 &
 }
 
 if [ $# -ge 1 ]; then
@@ -56,6 +79,10 @@ case $cmd in
   up-devel)
     port=$(echo_port "$1"); shift
     APP_ENV=development cmd_up "$port" "$@"
+    ;;
+  restart)
+    port=$(echo_port "$1"); shift
+    cmd_restart "$port" "$@"
     ;;
   down)
     port=$(echo_port "$1"); shift

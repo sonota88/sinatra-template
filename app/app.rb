@@ -169,6 +169,14 @@ get "/shutdown" do
   end
 end
 
+get "/pid" do
+  if $PROFILE == :devel
+    Process.pid.to_s
+  else
+    ""
+  end
+end
+
 get "/api/sample" do
   _api_v2(params) do |_params|
     puts_e "-->> GET /api/sample"
